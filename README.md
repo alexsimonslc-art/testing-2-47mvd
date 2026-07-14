@@ -1,2 +1,3 @@
-# testing-2-47mvd
-testing 2 — built with GalSol
+# testing 2
+
+Built with GalSol Ultimate Websites.
