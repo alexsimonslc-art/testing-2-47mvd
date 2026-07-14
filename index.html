@@ -3,20 +3,75 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>testing 2</title>
+<title>Echoes in the Forest Music Festival</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <main class="wrap">
-  <h1>testing 2</h1>
-  <p class="lead">An unforgettable event is coming. Here's everything you need to know — save the date and join us.</p>
-  <p><a class="btn" href="#register">Register now</a></p>
-  <div class="card"><strong>When</strong><br><span class="muted">Add your date &amp; time</span></div>
-  <div class="card"><strong>Where</strong><br><span class="muted">Add your venue</span></div>
-  <div class="card" id="register"><strong>Register</strong><br><span class="muted">Connect your GalSol form here.</span></div>
+  <div class="badge">Annual Gathering</div>
+  <h1>Where Rhythm Meets the Wilderness</h1>
+  <p class="lead">Lose yourself in the sound. Join us for three days of immersive beats, live art, and starlit performances deep in the heart of the ancient pines.</p>
+  
+  <p><a class="btn" href="#register">Secure Your Pass</a></p>
+
+  <!-- Countdown Timer Section -->
+  <div class="countdown-container">
+    <h3 class="countdown-title">The Countdown Has Begun</h3>
+    <div class="countdown">
+      <div class="time-block">
+        <span id="days">00</span>
+        <span class="label">Days</span>
+      </div>
+      <div class="time-block">
+        <span id="hours">00</span>
+        <span class="label">Hours</span>
+      </div>
+      <div class="time-block">
+        <span id="minutes">00</span>
+        <span class="label">Mins</span>
+      </div>
+      <div class="time-block">
+        <span id="seconds">00</span>
+        <span class="label">Secs</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card"><strong>When</strong><br><span class="muted">September 12th - 14th, 2025</span></div>
+  <div class="card"><strong>Where</strong><br><span class="muted">The Whispering Pines Amphitheatre</span></div>
+  <div class="card" id="register"><strong>Register</strong><br><span class="muted">Connect your GalSol form here to get early-bird ticket access.</span></div>
 </main>
 <footer>Made with GalSol</footer>
+
+<script>
+  // Set the countdown date (e.g., September 12, 2025)
+  const countdownDate = new Date("Sep 12, 2025 18:00:00").getTime();
+
+  const updateCountdown = () => {
+    const now = new Date().getTime();
+    const distance = countdownDate - now;
+
+    if (distance < 0) {
+      document.querySelector(".countdown").innerHTML = "<h3>The music has started!</h3>";
+      clearInterval(interval);
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("days").innerText = days.toString().padStart(2, '0');
+    document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+    document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+    document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+  };
+
+  updateCountdown();
+  const interval = setInterval(updateCountdown, 1000);
+</script>
 </body>
 </html>
